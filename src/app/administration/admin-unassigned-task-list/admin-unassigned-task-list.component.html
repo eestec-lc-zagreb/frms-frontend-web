@@ -1,0 +1,42 @@
+<br />
+<br />
+<br />
+<div class="container-fluid">
+  <h2>Unassigned companies</h2>
+  <hr />
+  <app-company-filter [navigationPage]="'/administration/tasks/new'"></app-company-filter>
+
+  <table class="table table-responsive table-bordered table-striped">
+    <thead>
+    <tr>
+      <th></th>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Short name</th>
+      <th>Address</th>
+      <th>Type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr
+      *ngFor="let company of companies; let i = index">
+      <td>
+        <button
+          class="btn btn-primary"
+          (click)="onAssignCompany(i)"
+          [disabled]="userId == null || type == null">
+          <span *ngIf="!submitted[i]">Assign</span>
+          <spinner *ngIf="submitted[i]" [tickness]="1" [size]="20" [color]="'#ffffff'"></spinner>
+        </button>
+      </td>
+      <td>
+        <a [routerLink]="['/administration/companies', company.id]">#{{company.id}}</a>
+      </td>
+      <td>{{company.name}}</td>
+      <td>{{company.shortName}}</td>
+      <td>{{company.address}}</td>
+      <td>{{company.type}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

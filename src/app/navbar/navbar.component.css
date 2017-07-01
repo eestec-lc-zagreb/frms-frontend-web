@@ -1,0 +1,17 @@
+li > a {
+  cursor: pointer;
+}
+
+.signout a{
+  border: 1px solid #0af;
+  background-color: #fff;
+  color: #0af !important;
+}
+
+.signout a:hover, .signout a:focus {
+  background-color: #0af;
+  border-radius: 25px;
+  color: #ffffff !important;
+  border: 1px solid #0af;
+}
+

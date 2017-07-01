@@ -1,0 +1,57 @@
+<br/>
+<div class="row">
+  <form class="form-horizontal">
+    <div class="col-xs-12 col-md-2 col-lg-2">
+      <label for="event">Event</label>
+      <select class="form-control" [(ngModel)]="eventId" name="event" id="event">
+        <option *ngFor="let evt of allEvents" [value]="evt.id">{{evt.name}} {{evt.year}}</option>
+      </select>
+    </div>
+    <div class="col-xs-12 col-md-2 col-lg-2">
+      <label for="company">Company</label>
+      <select class="form-control" [(ngModel)]="companyId" name="company" id="company">
+        <option *ngFor="let company of allCompanies" [value]="company.id">{{company.name}}</option>
+      </select>
+    </div>
+    <div class="col-xs-12 col-md-2 col-lg-2">
+      <label for="user">User</label>
+      <select
+        class="form-control"
+        [(ngModel)]="userId"
+        name="user"
+        id="user"
+        [disabled]="!isAdmin">
+        <option *ngFor="let user of allUsers" [value]="user.id">{{user.firstName}} {{user.lastName}}</option>
+      </select>
+    </div>
+    <div class="col-xs-12 col-md-2 col-lg-2">
+      <label for="type">Type</label>
+      <select class="form-control" [(ngModel)]="type" name="type" id="type">
+        <option *ngFor="let type of types" [value]="type">{{type}}</option>
+      </select>
+    </div>
+    <div class="col-xs-12 col-md-2 col-lg-2">
+      <label for="status">Status</label>
+      <select class="form-control" name="status" [(ngModel)]="status" id="status">
+        <option *ngFor="let status of statuses" [value]="status">{{status}}</option>
+      </select>
+    </div>
+    <div class="col-xs-12 col-md-2 col-lg-2">
+      <br/>
+      <button
+        class="btn btn-default filter-controls-1"
+        type="button"
+        (click)="onFilter()">
+        Filter
+      </button>
+      <button
+      class="btn btn-warning filter-controls-2 text-center"
+      type="button"
+      (click)="onClear()">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </button>
+    </div>
+  </form>
+</div>
+
+<hr class="bottom-line"/>

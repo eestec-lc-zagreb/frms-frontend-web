@@ -1,0 +1,48 @@
+<br/>
+<div class="container-fluid">
+  <h2>All tasks</h2>
+  <hr/>
+
+  <app-task-filter [navigationPage]="'/administration/tasks'"></app-task-filter>
+
+  <div id="spinner-block" class="text-center" *ngIf="pageLoading || filterLoading" style="width: 100%">
+    <br />
+    <spinner class="center-block" [size]="50" [tickness]="2" [color]="'#11aaff'"></spinner>
+  </div>
+
+  <table *ngIf="!pageLoading && !filterLoading" class="table table-responsive table-bordered table-striped">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Event</th>
+      <th>Company</th>
+      <th>Assignee</th>
+      <th>Type</th>
+      <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr
+      *ngFor="let task of tasks">
+      <td><a [routerLink]="['/administration/tasks', this.task.id]">#{{task.id}}</a></td>
+      <td>{{task.event.shortName}}</td>
+      <td>{{task.company.shortName}}</td>
+      <td>{{task.assignee.firstName}} {{task.assignee.lastName}}</td>
+      <td>
+        <label
+          class="label"
+          [ngClass]="{'label-success': task.type === 'FINANCIAL', 'label-info': task.type === 'MATERIAL'}">
+          {{task.type}}
+        </label>
+      </td>
+      <td>
+        <label
+          class="label"
+          [ngClass]="{'label-success': task.status === 'ACCEPTED', 'label-danger': task.status === 'DECLINED', 'label-primary': task.status === 'IN_PROGRESS'}">
+          {{task.status}}
+        </label>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,17 @@
+<br />
+<div class="container">
+
+  <div id="spinner-block" class="text-center" *ngIf="loading" style="width: 100%">
+    <br/>
+    <spinner class="center-block" [size]="50" [tickness]="2" [color]="'#11aaff'"></spinner>
+  </div>
+
+  <h2
+    *ngIf="task != null && !loading">Task #{{task.id}}</h2>
+  <a routerLink="/administration/tasks">Back to task list</a>
+  <hr />
+  <app-task-edit
+    [task]="task"
+    *ngIf="task != null">
+  </app-task-edit>
+</div>

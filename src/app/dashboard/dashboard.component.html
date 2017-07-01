@@ -1,0 +1,31 @@
+<div class="container-fluid">
+
+  <div id="spinner-block" class="text-center" *ngIf="statisticsLoading || activeTasksLoading" style="width: 100%">
+    <br />
+    <spinner class="center-block" [size]="50" [tickness]="2" [color]="'#11aaff'"></spinner>
+  </div>
+
+  <div *ngIf="! (statisticsLoading && activeTasksLoading)" class="row">
+
+    <div class="col-xs-12 col-md-3 col-lg-2 well">
+      <app-profile-sidebar [user]="user"></app-profile-sidebar>
+    </div>
+
+    <div class="col-xs-12 col-md-9 col-lg-10">
+      <h1>Dashboard</h1>
+
+      <div class="row">
+        <div class="col-xs-12 col-md-12 col-lg-6">
+          <app-active-tasks-list [tasks]="tasks"></app-active-tasks-list>
+        </div>
+
+        <div class="col-xs-12 col-md-12 col-lg-6">
+          <app-user-history [stats]="statistics"></app-user-history>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+

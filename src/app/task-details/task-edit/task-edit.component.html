@@ -1,0 +1,120 @@
+<form
+  (ngSubmit)="onSubmit()">
+
+  <div class="form-group">
+    <label for="event">Event:</label>
+    <input
+      type="text"
+      class="form-control"
+      id="event"
+      [value]="eventName"
+      [disabled]="true">
+  </div>
+
+  <div class="form-group">
+    <label for="company">Company:</label>
+    <input type="text"
+           class="form-control"
+           id="company"
+           [value]="companyname"
+           [disabled]="true">
+  </div>
+
+  <div class="form-group">
+    <label for="assignee">Assignee:</label>
+    <select
+      type="text"
+      class="form-control"
+      id="assignee"
+      name="assignee"
+      [(ngModel)]="model.userId"
+      [disabled]="!isAdmin">
+      <option *ngFor="let user of allUsers" [value]="user.id">{{user.firstName}} {{user.lastName}}</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="spType">Sponsorship type:</label>
+    <select
+      type="text"
+      class="form-control"
+      id="spType"
+      name="type"
+      [(ngModel)]="model.type"
+      [disabled]="!isAdmin">
+      <option *ngFor="let type of allTypes" [value]="type">{{type}}</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="callTime">Call time:</label>
+    <datetime
+      id="callTime"
+      name="callTime"
+      [timepicker]="timepickerOpts"
+      [datepicker]="datepickerOpts"
+      [(ngModel)]="model.callTime"
+      #callTime="ngModel">
+    </datetime>
+  </div>
+
+  <div class="form-group">
+    <label for="mailTime">Mail time:</label>
+    <datetime
+      id="mailTime"
+      name="mailTime"
+      [timepicker]="timepickerOpts"
+      [datepicker]="datepickerOpts"
+      [(ngModel)]="model.mailTime"
+      #mailTime="ngModel">
+    </datetime>
+  </div>
+
+  <div class="form-group">
+    <label for="followupTime">Follow up time:</label>
+    <datetime
+      id="followupTime"
+      name="followUpTime"
+      [timepicker]="timepickerOpts"
+      [datepicker]="datepickerOpts"
+      [(ngModel)]="model.followUpTime"
+      #followUpTime="ngModel">
+    </datetime>
+  </div>
+
+  <div class="form-group">
+    <label for="status">Status:</label>
+    <select
+      class="form-control"
+      id="status"
+      name="status"
+      [(ngModel)]="model.status"
+      #status="ngModel">
+
+      <option value="IN_PROGRESS">IN PROGRESS</option>
+      <option value="ACCEPTED">ACCEPTED</option>
+      <option value="DECLINED">DECLINED</option>
+
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="notes">Notes:</label>
+    <textarea
+      type="text"
+      rows="3"
+      class="form-control"
+      id="notes"
+      name="notes"
+      [(ngModel)]="model.notes"
+      #notes="ngModel">
+    </textarea>
+  </div>
+
+  <button
+    type="submit"
+    class="btn btn-success">
+    <span *ngIf="!submitted">Save changes</span>
+    <spinner *ngIf="submitted" [tickness]="1" [size]="20" [color]="'#ffffff'"></spinner>
+  </button>
+</form>

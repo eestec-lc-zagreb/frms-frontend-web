@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div id="spinner-block" class="text-center" *ngIf="loading" style="width: 100%">
+      <br />
+      <spinner class="center-block" [size]="50" [tickness]="2" [color]="'#11aaff'"></spinner>
+    </div>
+
+    <h1 *ngIf="task">Task #{{ task.id }}</h1>
+
+    <div class="row">
+      <div class="col-xs-12 col-md-6 col-lg-6">
+        <app-task-edit *ngIf="task" [task]="task"></app-task-edit>
+      </div>
+
+      <div class="col-xs-12 col-md-6 col-lg-6">
+        <app-company-edit *ngIf="task" [company]="task.company"></app-company-edit>
+      </div>
+    </div>
+
+  </div>
+</div>

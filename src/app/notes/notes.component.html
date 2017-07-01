@@ -1,0 +1,14 @@
+<div class="container">
+  <h2>My notes</h2>
+  <hr/>
+
+  <label for="notes"></label>
+  <textarea id="notes" [(ngModel)]="content" rows="10">
+  </textarea>
+
+  <br/>
+  <button class="btn btn-success" (click)="save()">
+    <span *ngIf="!saveButtonLoading">Save changes</span>
+    <spinner *ngIf="saveButtonLoading" [tickness]="1" [size]="20" [color]="'#ffffff'"></spinner>
+  </button>
+</div>

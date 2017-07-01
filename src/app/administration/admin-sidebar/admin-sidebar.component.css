@@ -1,0 +1,13 @@
+.link-active {
+  color: white;
+  background-color: #0af;
+}
+
+.link-active > a {
+  color: white;
+}
+
+a:hover {
+  color: white;
+  background-color: #0af;
+}

@@ -1,0 +1,19 @@
+<div class="panel panel-success">
+  <div class="panel-heading">Active tasks</div>
+  <div class="panel-body">
+
+    <p *ngIf="tasks.length == 0" class="cta-2-txt">There are no active tasks</p>
+
+    <div
+      *ngIf="tasks.length > 0"
+      class="list-group">
+
+      <a
+        *ngFor="let task of tasks"
+        [routerLink]="['/tasks', task.id]"
+        class="list-group-item">
+        <strong>#{{ task.id }}</strong> {{ task.company.name }} <span class="pull-right">{{ task.event.name }}</span>
+      </a>
+    </div>
+  </div>
+</div>

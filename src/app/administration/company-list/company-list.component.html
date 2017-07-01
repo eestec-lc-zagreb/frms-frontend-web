@@ -1,0 +1,32 @@
+<br />
+<div class="container-fluid">
+  <h2>Companies</h2>
+  <a routerLink="/administration/companies/new">Add new company</a>
+  <hr />
+  <app-company-filter [navigationPage]="'/administration/companies'"></app-company-filter>
+
+  <div id="spinner-block" class="text-center" *ngIf="pageLoading || filterLoading" style="width: 100%">
+    <br />
+    <spinner class="center-block" [size]="50" [tickness]="2" [color]="'#11aaff'"></spinner>
+  </div>
+
+  <table *ngIf="!pageLoading && !filterLoading" class="table table-responsive table-bordered table-striped">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Short name</th>
+      <th>Address</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr
+      *ngFor="let company of companies">
+      <td><a [routerLink]="['/administration/companies', company.id]">#{{company.id}}</a></td>
+      <td>{{company.name}}</td>
+      <td>{{company.shortName}}</td>
+      <td>{{company.address}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

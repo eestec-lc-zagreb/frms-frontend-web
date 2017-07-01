@@ -1,0 +1,39 @@
+<br/>
+<div class="container-fluid">
+  <h2>Users</h2>
+  <a routerLink="/administration/users/new">Add new user</a>
+  <hr/>
+
+  <div id="spinner-block" class="text-center" *ngIf="loading" style="width: 100%">
+    <br />
+    <spinner class="center-block" [size]="50" [tickness]="2" [color]="'#11aaff'"></spinner>
+  </div>
+
+  <table *ngIf="!loading" class="table table-responsive table-bordered table-striped">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Contact</th>
+      <th>Email</th>
+      <th>Role</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr
+      *ngFor="let user of users">
+      <td><a [routerLink]="['/administration/users', user.id]">#{{user.id}}</a></td>
+      <td>{{user.firstName}} {{user.lastName}}</td>
+      <td>{{user.phoneNumber}}</td>
+      <td>{{user.email}}</td>
+      <td>
+        <label
+          class="label"
+          [ngClass]="{'label-default': user.role === 'USER', 'label-primary': user.role === 'ADMIN'}">
+          {{user.role}}
+        </label>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,62 @@
+<br />
+<div class="col-xs-12 col-md-6 col-md-offset-1 col-lg-6 col-lg-offset-1">
+
+  <div id="spinner-block" class="text-center" *ngIf="pageLoading" style="width: 100%">
+    <br/>
+    <spinner class="center-block" [size]="50" [tickness]="2" [color]="'#11aaff'"></spinner>
+  </div>
+
+  <form
+    *ngIf="!pageLoading"
+    (ngSubmit)="onSubmit()"
+    #eventUpdateForm="ngForm">
+
+    <fieldset>
+      <legend>Event</legend>
+      <a routerLink="/administration/events">Back to event list</a>
+      <br />
+      <div class="form-group">
+        <label for="eventName">Name:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="eventName"
+          name="name"
+          [(ngModel)]="model.name"
+          #name="ngModel"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label for="eventShortName">Short name:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="eventShortName"
+          name="shortName"
+          [(ngModel)]="model.shortName"
+          #shortName="ngModel">
+      </div>
+
+      <div class="form-group">
+        <label for="year">Year</label>
+        <input
+          type="text"
+          class="form-control"
+          id="year"
+          name="year"
+          [(ngModel)]="model.year"
+          #year="ngModel"
+          required>
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-default"
+        [disabled]="!eventUpdateForm.valid">
+        <span *ngIf="!submitted">Save changes</span>
+        <spinner *ngIf="submitted" [tickness]="1" [size]="20" [color]="'#11aaff'"></spinner>
+      </button>
+    </fieldset>
+  </form>
+</div>

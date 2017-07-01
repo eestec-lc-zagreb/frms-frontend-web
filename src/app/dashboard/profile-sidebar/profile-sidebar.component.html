@@ -1,0 +1,48 @@
+<div id="profile-sidebar">
+  <img
+    id="profile-image"
+    class="img-thumbnail img-circle center-block"
+    width="80%"
+    src="assets/images/default-user-image.png"
+    alt="Loading profile image...">
+
+  <hr class="bottom-line" />
+  <h2 class="text-center">{{ user.firstName }} {{ user.lastName }}</h2>
+  <hr />
+
+  <div class="row">
+    <div class="col-xs-2 col-md-2">
+      <i class="fa fa-at fa-2x" aria-hidden="true"></i>
+    </div>
+    <div class="col-xs-10 col-md-10">
+      <span class="text-center">{{ user.email }}</span>
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-xs-2 col-md-2">
+      <i class="fa fa-phone fa-2x" aria-hidden="true"></i>
+    </div>
+    <div class="col-xs-10 col-md-10">
+      <span class="text-center">{{  user.phoneNumber }}</span>
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-xs-2 col-md-2">
+      <i class="fa fa-user-o fa-2x" aria-hidden="true"></i>
+    </div>
+    <div class="col-xs-10 col-md-10">
+      <span class="text-center"><label class="label label-success">{{ user.role }}</label></span>
+    </div>
+  </div>
+
+  <br />
+
+  <img
+    id="eestec-logo"
+    class="img-thumbnail center-block"
+    src="assets/images/eestec-lc-zagreb-logo.png"
+    alt="Loading eestec logo...">
+
+</div>

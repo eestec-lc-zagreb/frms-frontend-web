@@ -1,0 +1,32 @@
+<br/>
+<div class="row">
+  <form class="form-horizontal">
+    <div class="col-xs-12 col-md-2 col-lg-2">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" [(ngModel)]="namePattern" name="name" id="name">
+    </div>
+    <div class="col-xs-12 col-md-2 col-lg-2">
+      <label for="type">Type</label>
+      <select class="form-control" [(ngModel)]="type" name="type" id="type">
+        <option *ngFor="let type of allTypes" [value]="type">{{type}}</option>
+      </select>
+    </div>
+    <div class="col-xs-12 col-md-2 col-lg-2">
+      <br/>
+      <button
+        class="btn btn-default filter-controls-1"
+        type="button"
+        (click)="onFilter()">
+        Filter
+      </button>
+      <button
+        class="btn btn-warning filter-controls-2 text-center"
+        type="button"
+        (click)="onClear()">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </button>
+    </div>
+  </form>
+</div>
+
+<hr />

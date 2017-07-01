@@ -1,0 +1,31 @@
+<br />
+<div class="container-fluid">
+  <h2>Events</h2>
+  <a routerLink="/administration/events/new">Add new event</a>
+  <hr />
+
+  <div id="spinner-block" class="text-center" *ngIf="loading" style="width: 100%">
+    <br />
+    <spinner class="center-block" [size]="50" [tickness]="2" [color]="'#11aaff'"></spinner>
+  </div>
+
+  <table *ngIf="!loading" class="table table-responsive table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Short name</th>
+        <th>Year</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let event of events">
+        <td><a [routerLink]="['/administration/events', event.id]">#{{event.id}}</a></td>
+        <td>{{event.name}}</td>
+        <td>{{event.shortName}}</td>
+        <td>{{event.year}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,15 @@
+<br />
+<div class="container">
+  <a routerLink="/administration/companies">Back to company list</a>
+  <br />
+
+  <div id="spinner-block" class="text-center" *ngIf="loading" style="width: 100%">
+    <br/>
+    <spinner class="center-block" [size]="50" [tickness]="2" [color]="'#11aaff'"></spinner>
+  </div>
+
+  <app-company-edit
+    [company]="company"
+    *ngIf="company != null && !loading">
+  </app-company-edit>
+</div>

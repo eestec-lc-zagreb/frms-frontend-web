@@ -1,0 +1,22 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Statistics</div>
+
+  <div class="panel-body">
+   <div class="col-xs-12 col-md-4 col-lg-2">
+     <i class="fa fa-area-chart fa-5x" aria-hidden="true"></i>
+   </div>
+    <div class="col-xs-12 col-md-8 col-lg-10">
+      <h4>Accepted tasks <label class="label label-success pull-right">{{ stats.successful }}</label></h4>
+      <h4>Declined tasks <label class="label label-danger pull-right">{{ stats.unsuccessful }}</label></h4>
+      <h4>Collaborated on events<label class="label label-primary pull-right">{{ stats.numberOfEvents }}</label></h4>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Notes</div>
+
+  <div *ngIf="notes" class="panel-body">
+    <p>{{ notes }}</p>
+  </div>
+</div>
