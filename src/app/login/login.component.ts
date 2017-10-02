@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (user: User) => {
           this.authService.userStateChanged.next(user);
-          this.notificationService.notify('Authorization message', 'You are successfully logged in', 'success')
+          this.notificationService.notify('Authorization message', 'You are successfully logged in', 'success');
           this.router.navigate(['/dashboard']);
         },
         error => {

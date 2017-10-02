@@ -66,13 +66,13 @@ export class AuthorizationService {
     const body = res.json();
 
     localStorage.setItem('loggedUser', JSON.stringify(body));
-    const loggedUser: User = <User>(body);
+    const loggedUser: User = <User>body;
     this.loggedUser = loggedUser;
 
     return loggedUser;
   }
 
-  private handleError(error: Response | any): Observable<string> {
+  private handleError(error: Response | any) {
     // TODO In a real world app, we might use a remote logging infrastructure
     let errMsg: string;
     console.log('Error: ' + error)
