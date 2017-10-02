@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
 import { Observable } from 'rxjs/Observable';
 import { Headers, Http, RequestOptions, Response } from '@angular/http';
-import { API_BASE } from '../app.constants';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import { Subject } from 'rxjs/Subject';
 import { NotificationService } from './notification.service';
 import { Router } from '@angular/router';
+import { CONTEXT_PATH } from '../app.constants';
 
 @Injectable()
 export class AuthorizationService {
@@ -38,7 +38,7 @@ export class AuthorizationService {
 
     const credentials = 'username=' + email + '&password=' + password;
 
-    return this.http.post(API_BASE + '/login',
+    return this.http.post(CONTEXT_PATH + '/login',
       credentials,
       options)
       .map(this.extractData)
@@ -46,7 +46,7 @@ export class AuthorizationService {
   }
 
   logout() {
-    return this.http.get(API_BASE + '/logout')
+    return this.http.get(CONTEXT_PATH + '/logout')
       .subscribe(
         response => {
           if (response.status === 200) {

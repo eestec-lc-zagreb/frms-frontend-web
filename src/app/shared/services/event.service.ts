@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, RequestOptions, Response } from '@angular/http';
-import { API_BASE } from '../app.constants';
 import { Observable } from 'rxjs/Observable';
 import { Event } from '../models/event.model';
 import { Company } from '../models/company.model';
+import { CONTEXT_PATH } from '../app.constants';
 
 @Injectable()
 export class EventService {
@@ -17,29 +17,29 @@ export class EventService {
   }
 
   getEvent(eventId: number): Observable<Event> {
-    return this.http.get(API_BASE + '/events/' + eventId, EventService.options())
+    return this.http.get(CONTEXT_PATH + '/events/' + eventId, EventService.options())
       .map(response => <Event>response.json())
       .catch(this.handleError);
   }
 
   getAllEvents(): Observable<Event[]> {
-    return this.http.get(API_BASE + '/events', EventService.options())
+    return this.http.get(CONTEXT_PATH + '/events', EventService.options())
       .map(response => <Event[]>response.json())
       .catch(this.handleError);
   }
 
   createEvent(event: Event): Observable<Response> {
-    return this.http.post(API_BASE + '/events', event, EventService.options())
+    return this.http.post(CONTEXT_PATH + '/events', event, EventService.options())
       .catch(this.handleError);
   }
 
   updateEvent(eventId: number, event: Event): Observable<Response> {
-    return this.http.put(API_BASE + '/events/' + eventId, event, EventService.options())
+    return this.http.put(CONTEXT_PATH + '/events/' + eventId, event, EventService.options())
       .catch(this.handleError);
   }
 
   getUnassignedCompaniesForEvent(eventId: number): Observable<Company[]> {
-    return this.http.get(API_BASE + '/events/' + eventId + '/tasks/assign', EventService.options())
+    return this.http.get(CONTEXT_PATH + '/events/' + eventId + '/tasks/assign', EventService.options())
       .map(response => <Company[]>response.json())
       .catch(this.handleError);
   }

@@ -1,0 +1,6 @@
+{
+  "/frms/api": {
+    "target": "http://localhost:9190",
+    "secure": "false"
+  }
+}

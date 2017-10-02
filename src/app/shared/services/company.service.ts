@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { API_BASE } from '../app.constants';
 import 'rxjs/add/operator/map';
 import { Company } from '../models/company.model';
+import { CONTEXT_PATH } from '../app.constants';
 
 @Injectable()
 export class CompanyService {
@@ -17,37 +17,36 @@ export class CompanyService {
   }
 
   getCompanyTypes() {
-    return this.http.get(API_BASE + '/companies/types', CompanyService.options())
+    return this.http.get(CONTEXT_PATH + '/companies/types', CompanyService.options())
       .map(response => <string[]> response.json())
       .catch(this.handleError);
   }
 
   getCompanyDetails(companyId: number): Observable<Company> {
-    return this.http.get(API_BASE + '/companies/' + companyId, CompanyService.options())
+    return this.http.get(CONTEXT_PATH + '/companies/' + companyId, CompanyService.options())
       .map(response => <Company>response.json())
       .catch(this.handleError);
   }
 
   createCompany(company: Company): Observable<Response> {
-    return this.http.post(API_BASE + '/companies', company, CompanyService.options())
+    return this.http.post(CONTEXT_PATH + '/companies', company, CompanyService.options())
       .catch(this.handleError);
   }
 
   updateCompany(companyId: number, company: Company) {
-    return this.http.put(API_BASE + '/companies/' + companyId, company, CompanyService.options())
+    return this.http.put(CONTEXT_PATH + '/companies/' + companyId, company, CompanyService.options())
       .catch(this.handleError);
   }
 
   getAllCompanies(): Observable<Company[]> {
-    return this.http.get(API_BASE + '/companies', CompanyService.options())
+    return this.http.get(CONTEXT_PATH + '/companies', CompanyService.options())
       .map(response => <Company>response.json())
       .catch(this.handleError);
   }
 
   filterCompanies(name: string, type: string): Observable<Company[]> {
     return this.http.get(
-      API_BASE +
-      '/companies/search' +
+      CONTEXT_PATH + '/companies/search' +
       '?name=' + (name != null ? name : '') +
       '&type=' + (type != null ? type : ''),
       CompanyService.options())
